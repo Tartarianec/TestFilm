@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using AuthApp.Models;
+using TestFilm.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace TestFilm
@@ -28,6 +29,7 @@ namespace TestFilm
             // Add framework services.
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<FilmContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }
 
