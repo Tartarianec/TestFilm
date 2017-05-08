@@ -1,13 +1,76 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@model IEnumerable<TestFilm.Models.Film>
 
 
 <div class="row">
     <h3>@User.Identity.Name</h3>
     <div class="container-fluid col-lg-12">
-        <div>
-            тут будут фильмы
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                if (item.User == User.Identity.Name)
+                {                    
+                    <form class="form-control" style="border:none; box-shadow:none">
+                        <div class="form-group col-lg-12 navbar-text" style="height:50px; background-color:grey; margin:0 auto">
+                            <h3>@item.Name</h3>
+                        </div>
+                        <div class="form-group col-lg-3" style="background-color:yellow; height:300px">
+                            ПОСТЕР
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="Год выпуска: @item.Year" />
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="Режиссер: @item.Director" />
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="@item.Description" />
+                            <input type="text" value="User: @item.User" />
+                            <a asp-area="" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        </div>                        
+                    </form>
+
+                }
+                else
+                {
+                    <form class="form-control" style="border:none; box-shadow:none">
+                        <div class="form-group col-lg-12 navbar-text" style="height:50px; background-color:grey; margin:0 auto">
+                            <h3>@item.Name</h3>
+                        </div>
+                        <div class="form-group col-lg-3" style="background-color:yellow; height:300px">
+                            ПОСТЕР
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="Год выпуска: @item.Year" />
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="Режиссер: @item.Director" />
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" value="@item.Description" />
+                            <input type="text" value="User: @item.User" />
+                        </div>
+                    </form>
+                }
+
+            }
+
+            
+            
+            @*<table class="table">
+              @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Year</td>
+                    <td>@item.Director</td>
+                    <td>@item.Image</td>
+                    <td>@item.User</td>
+                </tr>
+                }
+            </table>*@
         </div>
     </div>
 </div>
