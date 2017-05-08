@@ -8,13 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TestFilm.Controllers
 {
     public class HomeController : Controller
-    {
-        //[Authorize]
-        //public IActionResult Index()
-        //{
-        //    return Content("Добро пожаловать" + User.Identity.Name);
-        //}
-        
+    {        
         private FilmContext db;
         public HomeController(FilmContext context)
         {
@@ -37,11 +31,7 @@ namespace TestFilm.Controllers
             };
             return View(viewModel);
         }
-
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await db.Films.ToListAsync());
-        //}
+        
         [Authorize]
         public IActionResult Create()
         {
