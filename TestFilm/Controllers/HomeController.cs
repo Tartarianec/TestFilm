@@ -21,10 +21,27 @@ namespace TestFilm.Controllers
             db = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View(await db.Films.ToListAsync());
+            int pageSize = 3;   // количество элементов на странице
+
+            IQueryable<Film> source = db.Films;
+            var count = await source.CountAsync();
+            var items = await source.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                Films = items
+            };
+            return View(viewModel);
         }
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await db.Films.ToListAsync());
+        //}
         [Authorize]
         public IActionResult Create()
         {

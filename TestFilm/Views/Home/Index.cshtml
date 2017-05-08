@@ -1,16 +1,15 @@
-﻿
-@model IEnumerable<TestFilm.Models.Film>
-
+﻿@using TestFilm.Models;
+@model IndexViewModel
 
 <div class="row">
     <h3>@User.Identity.Name</h3>
     <div class="container-fluid col-lg-12">
         <div class="row">
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Films )
             {
-                if (item.User == User.Identity.Name)
-                {                    
+                if ( item.User == User.Identity.Name)
+                {
                     <form class="form-control" style="border:none; box-shadow:none">
                         <div class="form-group col-lg-12 navbar-text" style="height:50px; background-color:grey; margin:0 auto">
                             <h3>@item.Name</h3>
@@ -53,24 +52,26 @@
                         </div>
                     </form>
                 }
-
-            }
-
-            
-            
-            @*<table class="table">
-              @foreach (var item in Model)
-                {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.Year</td>
-                    <td>@item.Director</td>
-                    <td>@item.Image</td>
-                    <td>@item.User</td>
-                </tr>
-                }
-            </table>*@
+            }          
         </div>
     </div>
 </div>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-right"></i>
+        Вперёд
+    </a>
+}
