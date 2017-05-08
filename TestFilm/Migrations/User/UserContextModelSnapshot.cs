@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using TestFilm.Models;
 
-namespace TestFilm.Migrations.Film
+namespace TestFilm.Migrations.User
 {
-    [DbContext(typeof(FilmContext))]
-    partial class FilmContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(UserContext))]
+    partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -16,26 +16,18 @@ namespace TestFilm.Migrations.Film
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Film", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("Director");
-
-                    b.Property<byte[]>("Image");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("User");
-
-                    b.Property<int>("Year");
+                    b.Property<string>("Password");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Films");
+                    b.ToTable("Users");
                 });
         }
     }

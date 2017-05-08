@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace AuthApp.Models
+namespace TestFilm.Models
 {
     public class UserContext : DbContext
     {

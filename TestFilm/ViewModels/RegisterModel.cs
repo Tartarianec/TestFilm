@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthApp.ViewModels
+namespace TestFilm.ViewModels
 {
     public class RegisterModel
     {

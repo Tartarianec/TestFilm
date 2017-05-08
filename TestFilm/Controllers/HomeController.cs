@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace TestFilm.Controllers
 {
     public class HomeController : Controller
-    {        
+    {
+       
+
+
+
+
         private FilmContext db;
         public HomeController(FilmContext context)
         {
@@ -42,10 +50,11 @@ namespace TestFilm.Controllers
         public async Task<IActionResult> Create(Film film)
         {
             film.User = User.Identity.Name;
-            db.Films.Add(film);                        
+            db.Films.Add(film);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
 
 
         public async Task<IActionResult> Edit(int? id)

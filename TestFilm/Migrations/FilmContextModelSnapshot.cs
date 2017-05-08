@@ -5,19 +5,18 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using TestFilm.Models;
 
-namespace TestFilm.Migrations.Film
+namespace TestFilm.Migrations
 {
     [DbContext(typeof(FilmContext))]
-    [Migration("20170508094727_initial")]
-    partial class initial
+    partial class FilmContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Film", b =>
+            modelBuilder.Entity("TestFilm.Models.Film", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();

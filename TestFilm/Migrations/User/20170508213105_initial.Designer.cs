@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using AuthApp.Models;
+using TestFilm.Models;
 
-namespace TestFilm.Migrations
+namespace TestFilm.Migrations.User
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20170508061005_Initial")]
-    partial class Initial
+    [Migration("20170508213105_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

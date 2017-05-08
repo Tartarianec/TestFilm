@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using AuthApp.ViewModels; 
-using AuthApp.Models;
+using TestFilm.ViewModels; 
+using TestFilm.Models;
 
-namespace AuthApp.Controllers
+namespace TestFilm.Controllers
 {
     public class AccountController : Controller
     {
